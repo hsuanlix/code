@@ -1,25 +1,46 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp25", "WindowsFormsApp25\WindowsFormsApp25.csproj", "{A28FE54A-7EE1-45E8-AE77-3292D6AD16CD}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A28FE54A-7EE1-45E8-AE77-3292D6AD16CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A28FE54A-7EE1-45E8-AE77-3292D6AD16CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A28FE54A-7EE1-45E8-AE77-3292D6AD16CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A28FE54A-7EE1-45E8-AE77-3292D6AD16CD}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C634D2AE-0A7C-4EE1-AEAD-C633E96DB43D}
-	EndGlobalSection
-EndGlobal
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp25
+{
+    public partial class Form1 : Form
+    {
+        int n = 3;
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int n = 3;
+            int [,]mag  = new int[n, n];
+            int row = 0;
+            int col = n / 2;
+            mag[row,col] = 1;
+
+            for(int a=2;a<=n*n;a++)
+            {
+                row = (row - 1 + n) % n;
+                col = (col - 1 + n) % n;
+                mag[row, col] = a;
+            }
+            
+            for (int b=0;b<n;b++)
+            {
+                for(int c=0;c<n;c++)
+                {  
+                    label1.Text=(mag[row, col].ToString());
+                }
+            }
+
+        }
+    }
+}
